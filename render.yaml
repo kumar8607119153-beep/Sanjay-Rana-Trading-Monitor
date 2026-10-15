@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: sanjay-rana-real-dashboard
+    runtime: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run sanjay_rana_real_dashboard.py --server.address 0.0.0.0 --server.port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
+      - key: TRADING_MODE
+        value: REAL
+      - key: BASE_URL
+        value: https://api.india.delta.exchange
+      - key: DELTA_PRODUCT_ID
+        value: "-1"
+      - key: REMOTE_TRADING
+        value: "false"
